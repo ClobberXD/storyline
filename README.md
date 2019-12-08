@@ -40,7 +40,7 @@ the game environment, for example.
 
 A script definition, among others, consists of a list of event IDs, which is
 the heart of this mod. The other fields are the `on_begin`, `on_end`, and
-`on_trigger_event` callback.
+`on_trigger_event` callbacks.
 
 ### Methods
 
@@ -85,6 +85,10 @@ the heart of this mod. The other fields are the `on_begin`, `on_end`, and
 - Sets the current event of the given player's storyline as complete.
 - Runs the script's `on_trigger_event` callback if it exists, and then executes
   the next event's `on_run` callback.
+- Note: **It's the downstream mod's responsibility to track the progress of
+  player's events**. As `storyline` has no knowledge of event progress, the
+  downstream mod must call `storyline.finish_event` to notify `storyline`
+  that an event has been completed.
 
 ### Callbacks
 
