@@ -92,18 +92,18 @@ the heart of this mod. The other fields are the `on_begin`, `on_end`, and
 
 ### Callbacks
 
-#### `on_begin` [Script]
+#### `on_begin(<Player name>)` [Script]
 
 Runs when a script is initialized during a call to `storyline.begin_script`.
 
-#### `on_trigger_event` [Script]
+#### `on_trigger_event(<Player name>)` [Script]
 
 Runs when an event is complete, just before the new event's `on_run` is executed.
 
-#### `on_end` [Script]
+#### `on_end(<Player name>)` [Script]
 
 Runs when a script is over.
 
-#### `on_run` [Event] (Mandatory)
+#### `on_run(<Player name>)` [Event] (Mandatory)
 
 Executed after `on_trigger_event`, when the script triggers an event.
