@@ -1,6 +1,8 @@
 local scripts = {}
 local events  = {}
 
+local copy = table.copy
+
 do
 local storage    = minetest.get_mod_storage()
 local parse_json = minetest.parse_json
@@ -28,7 +30,7 @@ function storyline.set_script(name, script)
 end
 
 function storyline.get_script(name)
-	return scripts[name]
+	return copy(scripts[name])
 end
 
 -- Separate script setting from initialization, to defer the latter if need be
@@ -61,7 +63,7 @@ function storyline.register_event(evt)
 end
 
 function storyline.get_event(evt_id)
-	return events[evt_id]
+	return copy(events[evt_id])
 end
 
 function storyline.finish_event(name)
