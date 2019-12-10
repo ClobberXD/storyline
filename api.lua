@@ -45,7 +45,7 @@ function storyline.begin_script(name)
 
 	-- Run the first event's on_run callback
 	script.curr_evt = 1
-	script.events[script.curr_evt].on_run(name)
+	storyline.get_event(script.curr_evt).on_run(name)
 end
 
 -- Registers events, which can be later compiled into a script
@@ -79,6 +79,6 @@ function storyline.finish_event(name)
 		if script.on_trigger_event then
 			script.on_trigger_event(name)
 		end
-		script.events[script.curr_evt].on_run(name)
+		storyline.get_event(script.curr_evt).on_run(name)
 	end
 end

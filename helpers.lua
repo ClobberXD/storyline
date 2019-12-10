@@ -4,7 +4,7 @@ function storyline.is_valid_event(evt)
 	end
 
 	if not evt.description or type(evt.description) ~= "string" or
-			not evt.run or type(evt.run) ~= "function" then
+			not evt.on_run or type(evt.on_run) ~= "function" then
 		return false
 	end
 
@@ -21,7 +21,7 @@ function storyline.is_valid_script(script)
 	end
 
 	local count = 1
-	for i, evt_id in pairs(script.event) do
+	for i, evt_id in pairs(script.events) do
 		-- Script table must be an array-type Lua table!
 		-- Compare with count, to check for array-type table
 		if type(i) ~= "number" or i ~= count then
