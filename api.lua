@@ -2,7 +2,7 @@ local scripts = {}
 local events  = {}
 
 do
-local storage    = minetest.get_modstorage()
+local storage    = minetest.get_mod_storage()
 local parse_json = minetest.parse_json
 local write_json = minetest.write_json
 
