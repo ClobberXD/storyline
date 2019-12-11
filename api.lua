@@ -70,6 +70,16 @@ function storyline.get_event(evt_id)
 	return copy(events[evt_id])
 end
 
+-- Get ID of player's current event
+function storyline.get_current_event(name)
+	local script = scripts[name]
+	if not script or not script.curr_evt then
+		return
+	end
+
+	return script.curr_evt
+end
+
 function storyline.finish_event(name)
 	local script = scripts[name]
 	if not script then
@@ -87,5 +97,6 @@ function storyline.finish_event(name)
 			script.on_trigger_event(name)
 		end
 		storyline.get_event(script.curr_evt).on_run(name)
+		scripts[name] = script
 	end
 end
