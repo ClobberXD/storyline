@@ -34,7 +34,7 @@ function storyline.delete_script(name)
 end
 
 function storyline.get_script(name)
-	return copy(scripts[name])
+	return scripts[name] and copy(scripts[name])
 end
 
 -- Separate script setting from initialization, to defer the latter if need be
@@ -80,6 +80,7 @@ function storyline.finish_event(name)
 	-- bump to next event, invoke on_trigger_event and the event's on_run
 	if script.curr_evt == #script.events and script.on_end then
 		script.on_end(name)
+		scripts[name] = nil
 	else
 		script.curr_evt = script.curr_evt + 1
 		if script.on_trigger_event then
