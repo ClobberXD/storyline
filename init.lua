@@ -5,3 +5,9 @@ dofile(modpath .. "helpers.lua")
 dofile(modpath .. "api.lua")
 
 dofile(modpath .. "test.lua")
+
+--------------------------------------------------------------------------------
+
+storyline.load()
+
+minetest.register_on_shutdown(storyline.save)

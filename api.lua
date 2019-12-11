@@ -27,10 +27,13 @@ function storyline.set_script(name, script)
 
 	script.curr_evt = nil
 	scripts[name] = script
+
+	storyline.save()
 end
 
 function storyline.delete_script(name)
 	scripts[name] = nil
+	storyline.save()
 end
 
 function storyline.get_script(name)
@@ -52,6 +55,8 @@ function storyline.begin_script(name)
 	-- Run the first event's on_run callback
 	script.curr_evt = 1
 	storyline.get_event(script.curr_evt).on_run(name)
+
+	storyline.save()
 end
 
 -- Registers events, which can be later compiled into a script
@@ -63,6 +68,8 @@ function storyline.register_event(evt)
 
 	local evt_id   = #events + 1
 	events[evt_id] = evt
+
+	storyline.save()
 	return evt_id
 end
 
@@ -99,4 +106,6 @@ function storyline.finish_event(name)
 		storyline.get_event(script.curr_evt).on_run(name)
 		scripts[name] = script
 	end
+
+	storyline.save()
 end
