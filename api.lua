@@ -29,6 +29,10 @@ function storyline.set_script(name, script)
 	scripts[name] = script
 end
 
+function storyline.delete_script(name)
+	scripts[name] = nil
+end
+
 function storyline.get_script(name)
 	return copy(scripts[name])
 end
